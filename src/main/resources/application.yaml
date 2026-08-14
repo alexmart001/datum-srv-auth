@@ -1,0 +1,29 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: datum-srv-auth
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/datum_db?useTimezone=true&serverTimezone=UTC
+    username: user_datum
+    password: C0ntrol3Xyz21
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+    show-sql: false
+    open-in-view: false
+
+# Client OAuth2 usado pelo Postman (ou outra aplicação) para se autenticar
+# junto ao Authorization Server. Identifica a APLICAÇÃO chamadora, não o
+# usuário final - o usuário final é autenticado via username/password no
+# corpo da requisição do grant "password" (ver OAuth2PasswordAuthenticationProvider).
+datum:
+  auth:
+    issuer: http://localhost:9000
+    client-id: postman-client
+    client-secret: postman-secret
