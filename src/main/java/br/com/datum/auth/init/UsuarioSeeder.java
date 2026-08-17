@@ -9,11 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/**
- * Cria dois usuários de exemplo (admin/user) na primeira subida da
- * aplicação, apenas para permitir testar o fluxo de autenticação sem
- * precisar cadastrar usuários manualmente no banco.
- */
 @Component
 public class UsuarioSeeder implements CommandLineRunner {
 

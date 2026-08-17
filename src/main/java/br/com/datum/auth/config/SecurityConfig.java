@@ -20,13 +20,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    /**
-     * Chain padrão, para qualquer requisição que não seja um dos endpoints
-     * do Authorization Server (esses são tratados com prioridade mais alta
-     * em AuthorizationServerConfig). Este projeto não expõe endpoints
-     * próprios além dos do Authorization Server, então isso é só uma rede
-     * de segurança.
-     */
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -44,10 +37,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    /**
-     * Usado pelo OAuth2PasswordAuthenticationProvider para validar
-     * username/password do usuário final contra a tabela tb_usuario.
-     */
     @Bean
     public AuthenticationManager authenticationManager(UsuarioDetailsService usuarioDetailsService,
                                                          PasswordEncoder passwordEncoder) {
