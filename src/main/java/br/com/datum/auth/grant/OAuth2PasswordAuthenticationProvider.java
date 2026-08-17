@@ -24,21 +24,6 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 
 import java.util.Set;
 
-/**
- * Implementa o grant customizado "password" (Resource Owner Password
- * Credentials), inexistente por padrão no Spring Authorization Server a
- * partir do OAuth 2.1 (foi removido do padrão, mas segue sendo útil para
- * cenários internos como este, testados via Postman).
- *
- * Fluxo:
- *  1. O client OAuth2 (ex.: "postman-client") já chegou aqui autenticado
- *     via Basic Auth (client_id/client_secret) - ver clientPrincipal.
- *  2. Autenticamos o USUÁRIO FINAL (username/password do corpo da
- *     requisição) contra a base de usuários (tabela tb_usuario).
- *  3. Emitimos um Access Token JWT contendo, entre outras claims, o papel
- *     do usuário (claim "roles"), usado pelos serviços de recurso para
- *     autorizar consulta (USER) ou escrita (ADMIN).
- */
 public class OAuth2PasswordAuthenticationProvider implements AuthenticationProvider {
 
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";

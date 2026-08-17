@@ -45,12 +45,6 @@ import java.time.Duration;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * Configuração do OAuth2 Authorization Server (Spring Authorization
- * Server), incluindo o registro do grant customizado "password" usado
- * pelo Postman para autenticar o usuário final e obter um Access Token
- * JWT.
- */
 @Configuration
 public class AuthorizationServerConfig {
 
@@ -89,11 +83,6 @@ public class AuthorizationServerConfig {
         return http.build();
     }
 
-    /**
-     * Client OAuth2 que representa a APLICAÇÃO chamadora (ex.: Postman).
-     * O usuário final é autenticado à parte, via username/password do
-     * grant "password" (ver OAuth2PasswordAuthenticationProvider).
-     */
     @Bean
     public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
@@ -114,12 +103,6 @@ public class AuthorizationServerConfig {
         return new InMemoryOAuth2AuthorizationService();
     }
 
-    /**
-     * Adiciona ao Access Token JWT a claim "roles", com o papel (ADMIN ou
-     * USER) do usuário autenticado. É essa claim que os serviços de
-     * recurso (ex.: datum-srv-clientes) usam para decidir se a chamada é
-     * apenas de consulta (USER) ou também de escrita (ADMIN).
-     */
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
         return context -> {

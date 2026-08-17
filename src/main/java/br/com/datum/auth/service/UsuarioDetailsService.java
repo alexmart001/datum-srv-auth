@@ -21,10 +21,6 @@ public class UsuarioDetailsService implements UserDetailsService {
         var usuario = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
 
-        // Autoridade sem prefixo "ROLE_": o claim "roles" do JWT carrega o nome
-        // puro do papel (ex.: "ADMIN"); quem adiciona o prefixo "ROLE_" é o
-        // resource server, ao converter o JWT em Authentication (ver
-        // JwtAuthenticationConverter no datum-srv-clientes).
         return User.withUsername(usuario.getUsername())
                 .password(usuario.getPassword())
                 .authorities(usuario.getRole().name())

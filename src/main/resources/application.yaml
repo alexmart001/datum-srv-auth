@@ -18,10 +18,6 @@ spring:
     show-sql: false
     open-in-view: false
 
-# Client OAuth2 usado pelo Postman (ou outra aplicação) para se autenticar
-# junto ao Authorization Server. Identifica a APLICAÇÃO chamadora, não o
-# usuário final - o usuário final é autenticado via username/password no
-# corpo da requisição do grant "password" (ver OAuth2PasswordAuthenticationProvider).
 datum:
   auth:
     issuer: http://${AUTH_HOST:localhost}:${AUTH_PORT:9000}

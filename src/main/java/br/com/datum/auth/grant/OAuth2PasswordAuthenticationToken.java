@@ -7,11 +7,6 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
 import java.util.Collections;
 import java.util.Set;
 
-/**
- * Representa uma solicitação de token usando o grant customizado
- * "password": usuário/senha do usuário final, autenticados no contexto
- * do client OAuth2 já autenticado (client_id/client_secret).
- */
 public class OAuth2PasswordAuthenticationToken extends OAuth2AuthorizationGrantAuthenticationToken {
 
     public static final AuthorizationGrantType GRANT_TYPE = new AuthorizationGrantType("password");

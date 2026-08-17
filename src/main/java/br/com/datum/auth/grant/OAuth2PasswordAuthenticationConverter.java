@@ -18,10 +18,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Lê uma requisição POST /oauth2/token com grant_type=password e extrai
- * username/password/scope do corpo do formulário.
- */
 public class OAuth2PasswordAuthenticationConverter implements AuthenticationConverter {
 
     @Override
